@@ -1,0 +1,22 @@
+name: MinecraftBingo
+version: 1.0
+main: nl.jophuijbers.bingo_plugin.Main
+author: Jop Huijbers
+api-version: 1.16
+
+commands:
+  start:
+    description: This command starts a game.
+    usage: /<command>
+  end:
+    description: This command ends a game.
+    usage: /<command>
+  join:
+    description: This command tries to join a team.
+    usage: /<command>
+  leave:
+    description: This command tries to leave a team.
+    usage: /<command>
+  reset:
+    description: This command resets the game.
+    usage: /<command>

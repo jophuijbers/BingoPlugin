@@ -1,0 +1,10 @@
+nl\jophuijbers\bingo_plugin\commands\LeaveGame.class
+nl\jophuijbers\bingo_plugin\Main.class
+nl\jophuijbers\bingo_plugin\commands\GameCommands.class
+nl\jophuijbers\bingo_plugin\Events.class
+nl\jophuijbers\bingo_plugin\bingo\Item.class
+nl\jophuijbers\bingo_plugin\bingo\Card.class
+nl\jophuijbers\bingo_plugin\bingo\Game.class
+nl\jophuijbers\bingo_plugin\commands\Reset.class
+nl\jophuijbers\bingo_plugin\bingo\Team.class
+nl\jophuijbers\bingo_plugin\commands\JoinGame.class
