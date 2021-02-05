@@ -1,2 +1,10 @@
-D:\Projects\plugins\bingo\src\main\java\Main.java
-D:\Projects\plugins\bingo\src\main\java\commands\TestCommand.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\bingo\Item.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\Main.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\commands\Reset.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\bingo\Card.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\Events.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\commands\GameCommands.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\commands\JoinGame.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\bingo\Game.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\bingo\Team.java
+D:\Projects\plugins\bingo\src\main\java\nl\jophuijbers\bingo_plugin\commands\LeaveGame.java
