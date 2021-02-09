@@ -1,27 +1,21 @@
 package nl.jophuijbers.bingo_plugin.bingo;
 
-import nl.jophuijbers.bingo_plugin.Main;
-import nl.jophuijbers.bingo_plugin.bingo.Card;
-import nl.jophuijbers.bingo_plugin.bingo.Item;
+import nl.jophuijbers.bingo_plugin.commands.Bingo;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 
 public class Game {
 
-    private final Plugin plugin;
-    private boolean isStarted;
+    private final ArrayList<BingoPlayer> players;
+    private final Lobby lobby;
 
-    private final int maxPlayers = 1;
-    private ArrayList<Team> teams;
-
-    public Game(Plugin plugin) {
-        this.plugin = plugin;
-        reset();
+    public Game() {
+        players = new ArrayList<>();
+        lobby = new Lobby("Lobby 1", 10);
     }
 
     public Card getCard() {
@@ -32,27 +26,29 @@ public class Game {
         return card;
     }
 
-    public void start() {
-        isStarted = true;
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "GAME STARTED");
-    }
-    public void stop() {
-        isStarted = false;
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "GAME ENDED");
-    }
-
     public void playerPickUpItem(Material item, Player player) {
-        checkItem(item, player);
-        checkBingo(getTeam(player));
+//        if ()
+//
+//
+//
+//        lobbies.get(0).getTeams().forEach(team -> {
+//            if (team.getPlayers().contains(player)) {
+//                if (isItemOnCard(item, team.getCard())) {
+//                    team.getPlayers().forEach(p -> p.sendMessage(Message.ITEM_FOUND(team.getName(), item.name())));
+//                    checkBingo(team);
+//                }
+//            }
+//        });
     }
 
-    public void checkItem(Material itemPickedUp, Player player) {
-        for (Item item : getTeam(player).getCard().getItems()) {
+    public boolean isItemOnCard(Material itemPickedUp, Card card) {
+        for (Item item : card.getItems()) {
             if (itemPickedUp == item.getMaterial()) {
                 item.setFound(true);
-                player.sendMessage(ChatColor.YELLOW + "YOU FOUND " + itemPickedUp.name());
+                return true;
             }
         }
+        return false;
     }
 
     public void checkBingo(Team team) {
@@ -65,50 +61,90 @@ public class Game {
     }
 
     public void win(Team team) {
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "BINGO! - " + team.getName().toUpperCase() + " WON!");
-        stop();
-        reset();
+//        Bukkit.broadcastMessage(Message.TEAM_WON(team.getName()));
+//        stop();
     }
 
-    public void joinTeam(Player player) {
-        if (!isStarted) {
-            for (Team team : teams) {
-                if (team.getPlayers().size() < maxPlayers) {
-                    team.join(player);
-                    player.sendMessage(ChatColor.BLUE + "YOU JOINED TEAM " + team.getName().toUpperCase());
-                    return;
-                }
-            }
-            player.sendMessage(ChatColor.RED + "ALL TEAMS ARE FULL");
-        } else {
-            player.sendMessage(ChatColor.RED + "GAME ALREADY STARTED");
-        }
+    public void start() {
+//        lobbies.get(0).setStarted(true);
+//        Bukkit.broadcastMessage(Message.GAME_STARTED());
+//
+//        lobbies.get(0).addTeam(new Team("Team 1", getCard()));
+//        lobbies.get(0).addTeam(new Team("Team 2", getCard()));
+//
+//        int count = 0;
+//        for (Player player : lobbies.get(0).getPlayers()) {
+//            if (count % 2 == 0) {
+//                lobbies.get(0).getTeams().get(0).join(player);
+//            } else {
+//                lobbies.get(0).getTeams().get(1).join(player);
+//            }
+//            count++;
+//        }
+    }
+    public void stop() {
+//        lobbies.get(0).setStarted(false);
+//        Bukkit.broadcastMessage(Message.GAME_ENDED());
+//
+//        lobbies.get(0).getPlayers().clear();
     }
 
-    public void leaveTeam(Player player) {
-        if (!isStarted) {
-            Team team = getTeam(player);
-            if (team != null) {
-                team.leave(player);
-                player.sendMessage(ChatColor.BLUE + "YOU LEFT TEAM " + team.getName().toUpperCase());
-            }
-            player.sendMessage(ChatColor.RED + "YOU ARE NOT YET IN A TEAM");
-        }
-        player.sendMessage(ChatColor.RED + "GAME ALREADY STARTED");
+    public void join(Player player) {
+//        for (Lobby lobby : lobbies) {
+//            if (lobby.getPlayers().size() < lobby.getMaxPlayers()) {
+//                if (!lobby.isStarted()) {
+//                    lobby.join(new BingoPlayer(player, lobby));
+//                    lobby.getPlayers().forEach(p -> p.getPlayer().sendMessage(Message.PLAYER_JOIN(player.getName())));
+//                    return;
+//                }
+//                player.sendMessage(Message.GAME_ALREADY_STARTED());
+//                return;
+//            }
+//            player.sendMessage(Message.LOBBY_FULL());
+//            return;
+//        }
     }
 
-    public Team getTeam(Player player) {
-        for (Team team : teams) {
-            if (team.getPlayers().contains(player)) {
-                return team;
-            }
-        }
+    public void join(BingoPlayer player) {
+//        for (Lobby lobby : lobbies) {
+//            if (lobby.getPlayers().size() < lobby.getMaxPlayers()) {
+//                if (!lobby.isStarted()) {
+//                    lobby.join(player);
+//                    player.setLobby(lobby);
+//                    lobby.getPlayers().forEach(p -> p.getPlayer().sendMessage(Message.PLAYER_JOIN(player.getPlayer().getName())));
+//                    return;
+//                }
+//                player.getPlayer().sendMessage(Message.GAME_ALREADY_STARTED());
+//                return;
+//            }
+//            player.getPlayer().sendMessage(Message.LOBBY_FULL());
+//            return;
+//        }
+    }
+    public void leave(BingoPlayer player) {
+//        BingoPlayer bingoPlayer = getBingoPlayer(player);
+//        if (bingoPlayer != null) {
+//
+//        } else {
+//            player.sendMessage(Message.PLAYER_NOT_IN_LOBBY());
+//        }
+//        for (Lobby lobby : lobbies) {
+//            if (lobby.getPlayers().contains(player)) {
+//                lobby.leave(player);
+//                lobby.getPlayers().forEach(p -> p.sendMessage(Message.PLAYER_LEAVE(player.getName())));
+//                return;
+//            }
+//        }
+    }
+
+    private BingoPlayer getBingoPlayer(Player player) {
+//        for (Lobby l : lobbies) {
+//            for (BingoPlayer p : l.getPlayers()) {
+//                if (p.getPlayer().getUniqueId() == player.getUniqueId()) {
+//                    return p;
+//                }
+//            }
+//        }
         return null;
-    }
-
-    public void reset() {
-        teams = new ArrayList<>();
-        teams.add(new Team("Team 1", getCard()));
-        teams.add(new Team("Team 2", getCard()));
     }
 }

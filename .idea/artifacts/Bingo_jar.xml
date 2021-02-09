@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Bingo.jar">
+    <output-path>$PROJECT_DIR$/../bukkit/plugins</output-path>
+    <root id="root">
+      <element id="archive" name="bingo.jar">
+        <element id="module-output" name="bingo" />
+      </element>
+    </root>
+  </artifact>
+</component>

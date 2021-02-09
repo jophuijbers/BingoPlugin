@@ -1,33 +1,26 @@
 package nl.jophuijbers.bingo_plugin;
 
+import nl.jophuijbers.bingo_plugin.bingo.BingoGame;
 import nl.jophuijbers.bingo_plugin.bingo.Game;
-import nl.jophuijbers.bingo_plugin.commands.GameCommands;
-import nl.jophuijbers.bingo_plugin.commands.JoinGame;
-import nl.jophuijbers.bingo_plugin.commands.LeaveGame;
-import nl.jophuijbers.bingo_plugin.commands.Reset;
+import nl.jophuijbers.bingo_plugin.commands.Bingo;
+import nl.jophuijbers.bingo_plugin.commands.Lobby;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
-    private final Game game = new Game(this);
+    private final Game game = new Game();
+    private final BingoGame bingoGame = new BingoGame();
 
     @Override
     public void onEnable() {
         getLogger().info("Bingo plugin enabled");
-        registerCommands();
-        getServer().getPluginManager().registerEvents(new Events(game), this);
+        getCommand("bingo").setExecutor(new Bingo(bingoGame));
+        getCommand("lobby").setExecutor(new Lobby(bingoGame));
+        getServer().getPluginManager().registerEvents(new Events(bingoGame), this);
     }
 
     @Override
     public void onDisable() {
         getLogger().info("Bingo plugin disabled");
-    }
-
-    private void registerCommands() {
-        getCommand("start").setExecutor(new GameCommands(game));
-        getCommand("end").setExecutor(new GameCommands(game));
-        getCommand("join").setExecutor(new JoinGame(game));
-        getCommand("leave").setExecutor(new LeaveGame(game));
-        getCommand("reset").setExecutor(new Reset(game));
     }
 }
